@@ -1,0 +1,23 @@
+<div class="page-wrapper">
+  <div>
+      <h2> Create New Collection </h2>
+  </div>
+  <div>
+    <form [formGroup]="collectionForm">
+      <div>
+        <mat-form-field>
+          <input matInput formControlName="title" placeholder="Title">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input matInput formControlName="description" placeholder="Description">
+        </mat-form-field>
+      </div>
+
+      <div>
+          <button mat-raised-button color="primary" (click)="createCollection()" [disabled]="!collectionForm.valid"> Create </button>
+      </div>
+    </form>
+  </div>
+</div>

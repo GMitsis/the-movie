@@ -1,0 +1,12 @@
+
+ <div class="page-wrapper">
+   <div>
+      <h2> <span class="collection-name"> {{ collection.title }} </span> Movies </h2>
+   </div>
+
+    <div>
+      <div *ngFor="let movie of collection.movies">
+       {{ movie }}
+      </div>
+    </div>
+ </div>

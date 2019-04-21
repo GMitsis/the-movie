@@ -1,7 +1,42 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [];
+import { MoviesComponent } from './components/movies/movies.component';
+import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
+import { MyCollectionsComponent } from './components/my-collections/my-collections.component';
+import { CollectionMoviesComponent } from './components/collection-movies/collection-movies.component';
+import { CreateCollectionComponent } from './components/create-collection/create-collection.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'movies',
+    pathMatch: 'full'
+  },
+  {
+    path: 'movies',
+    component: MoviesComponent,
+    children: [
+      {
+        path: 'details/:id',
+        component: MovieDetailsComponent
+      }
+    ]
+  },
+  {
+    path: 'my-collections',
+    component: MyCollectionsComponent,
+  },
+  {
+    path: 'my-collections/:title', 
+    component: CollectionMoviesComponent 
+
+  },
+  {
+    path: 'create-collection',
+    component: CreateCollectionComponent,
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

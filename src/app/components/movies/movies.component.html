@@ -1,0 +1,53 @@
+<div class="page-wrapper">
+    <div> 
+      <div class="search-container">
+        <form novalidate (ngSubmit)="onSubmit()">
+            <mat-form-field>
+              <input matInput [formControl]="searchParam" placeholder="Search Movie">
+            </mat-form-field>
+          <button mat-flat-button color="primary" type="submit" [disabled]="!searchParam.valid"> Search </button>
+        </form>        
+      </div>
+
+      <div *ngIf="moviesList">
+        <mat-grid-list cols="5" gutterSize="15px" class="grid-container">
+          <mat-grid-tile [colspan]="1" *ngFor="let movie of moviesList" [routerLink]="['/movies/details/', movie.id]">
+            <div class="movie-container">
+              <div  class="movie-image">
+                <img src="{{ baseUrl }}{{ posterSize }}{{ movie.poster_path }}" alt=""> 
+              </div>
+              <div class="movie-title">
+                  {{ movie.title }}
+              </div>
+              <div class="movie-rating">
+                <div>
+                    <mat-icon> stars </mat-icon> 
+                </div>
+                <div>
+                    {{ movie.vote_average }}
+                </div>               
+              </div>
+            </div>
+          </mat-grid-tile>
+        </mat-grid-list>
+  
+        <div class="pagination-container">
+          <div>
+              <button mat-raised-button (click)="setPagination(pagination.currentPage - 1)" [disabled]="pagination.currentPage === 1"> Previous </button>
+          </div>
+          <div *ngFor="let page of pagination.pages">
+              <button mat-raised-button (click)="setPagination(page)" [ngClass]="{ active: pagination.currentPage === page }"> {{ page }} </button>
+          </div>
+          <div>
+              <button mat-raised-button (click)="setPagination(pagination.currentPage + 1)" [disabled]="pagination.currentPage === pagination.totalPages"> Next </button>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="mock-modal">
+  <div>
+      <router-outlet></router-outlet>
+  </div>
+</div>

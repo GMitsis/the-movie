@@ -1,0 +1,68 @@
+<div  *ngIf="movie" class="movie-details-contaier">
+  <div class="image-container">
+    <div *ngIf="movie.poster_path; else noImage">
+      <img src="{{ baseUrl }}{{ posterSize }}{{ movie.poster_path }}" alt="">
+    </div>
+
+    <ng-template #noImage>
+        <div class="no-image">
+          <h5> NO Image Avilable </h5>
+        </div>
+    </ng-template>
+  </div>
+  <div>
+    <div class="movie-title">
+      {{ movie.title }}
+    </div>
+
+    <div class="rating-container">
+      <div>
+          {{ movie.vote_average }}
+      </div>
+      <div>
+          <mat-icon> star_rate </mat-icon>
+      </div>
+      <div>
+          ({{ movie.vote_count }})
+      </div>
+    </div>
+
+    <div class="movie-overview">
+      {{ movie.overview }}
+    </div>
+
+    <div class="budget-container">
+      <div>
+        <mat-icon> attach_money </mat-icon>
+      </div>
+      <div>
+        {{ movie.budget }}
+      </div>
+    </div>
+
+    <div class="revenue-container">
+        <div>
+          <mat-icon> trending_up </mat-icon>
+        </div>
+        <div>
+          {{ movie.revenue }}
+        </div>
+      </div>
+
+    <div class="data-container">
+      <div>
+        <mat-icon> date_range </mat-icon>
+      </div>
+      <div>
+        {{ movie.release_date | date: 'dd/MM/yyyy' }}
+      </div>
+    </div>
+
+    <div class="languages-container">
+      <div *ngFor="let language of movie.spoken_languages">
+        {{ language.name }}
+      </div>
+    </div>
+     
+  </div>
+</div>
