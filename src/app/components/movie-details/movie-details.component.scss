@@ -47,6 +47,10 @@
     div:nth-child(2) {
         color: gold;
     }
+
+    div:nth-child(2):hover {
+        cursor: pointer;
+    }
 }
 
 .languages-container {

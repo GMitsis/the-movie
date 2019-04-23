@@ -15,6 +15,8 @@ export class MovieDetailsComponent implements OnInit {
   
   baseUrl: string;
   posterSize: string;
+  
+  sessionId: string;
 
   constructor(
     private _activatedRoute: ActivatedRoute,
@@ -40,8 +42,39 @@ export class MovieDetailsComponent implements OnInit {
     this._moviesService.getMovie(this.movieId, params)
       .subscribe(res => {
         this.movie = res;
-
-        console.log('Movie Details:', this.movie);
       })
+  }
+  
+  rateMovie() {
+    const query = { 
+      api_key: '85204a8cc33baf447559fb6d51b18313',
+    }
+
+    this._moviesService.getSessionId(query)
+      .subscribe(res => {
+        this.sessionId = res['guest_session_id'];
+
+        this.setRating();
+        console.log('Session Id:', this.sessionId);
+      })
+
+
+  }
+
+  setRating() {
+    const query = { 
+      api_key: '85204a8cc33baf447559fb6d51b18313',
+      guest_session_id: this.sessionId
+    }
+
+    const rating = {
+      value: 8.5
+    };
+
+    this._moviesService.rateMovie(this.movieId, rating, query)
+      .subscribe(res => {
+        console.log('Res:', res) 
+      })
+
   }
 }

@@ -2,13 +2,23 @@
     <a mat-raised-button routerLink="/create-collection"> Create Collection </a>
 </div>
 
-<div>
-  <mat-grid-list cols="6" rowHeight="100" gutterSize="15px" class="grid-container">
-    <mat-grid-tile [colspan]="1" *ngFor="let collection of myCollections" [routerLink]="['/my-collections', collection.title]"> 
-      <div class="collection-item">
-        <div> {{ collection.title }} </div>
-        <div> {{ collection.description }} </div>
-      </div>
-    </mat-grid-tile>
-  </mat-grid-list>
-</div> 
+<div class="page-wrapper">
+  <div class="collection-list-container">
+    <div class="available-collections">
+      Available Collections
+    </div>
+    <div>
+      <mat-nav-list>
+        <a mat-list-item class="collection-item-container" *ngFor="let collection of myCollections" [routerLink]="['/my-collections', collection.title]">
+          <div  class="collection-item">
+            <div> {{ collection.title }} </div>
+            <div> {{ collection.description }} </div>  
+          </div>
+        </a>
+      </mat-nav-list>  
+    </div>
+  </div>
+  <div class="movie-list-container">
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-<div  *ngIf="movie" class="movie-details-contaier">
+<div *ngIf="movie" class="movie-details-contaier">
   <div class="image-container">
     <div *ngIf="movie.poster_path; else noImage">
       <img src="{{ baseUrl }}{{ posterSize }}{{ movie.poster_path }}" alt="">
@@ -19,7 +19,7 @@
       <div>
           {{ movie.vote_average }}
       </div>
-      <div>
+      <div (click)="rateMovie()">
           <mat-icon> star_rate </mat-icon>
       </div>
       <div>
@@ -27,7 +27,7 @@
       </div>
     </div>
 
-    <div class="movie-overview">
+    <div class="movie-overview"> 
       {{ movie.overview }}
     </div>
 

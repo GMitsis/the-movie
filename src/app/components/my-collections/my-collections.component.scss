@@ -6,18 +6,41 @@
 //     }
 // }
 
-.collection-item {
-    // border: 1px solid;
-    // padding: 5px;
-    // margin: 1px;
+.page-wrapper {
+    display: flex;
+    // border: 2px solid;
+}
 
+
+.available-collections {
+    font-size: 18px;
+    font-weight: bold;
+    color: #777;
+    padding: 15px 10px 5px 10px;
+}
+
+.collection-list-container {
+    width: 15%;
+}
+
+.movie-list-container {
+    // border: 2px solid red; 
+    width: 85%;
+}
+
+.collection-item-container + .collection-item-container {
+    border-top: 1px solid #EEE;
+}
+
+.collection-item {
     div:nth-child(1) {
         font-weight: bold;
         color: #444;
-        padding: 5px;
     }
 
     div:nth-child(2) {
+        padding: 3px 0px;
+        font-size: 14px;
         color: #AAA;
     }
 }

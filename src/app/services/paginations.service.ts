@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 
 export class PaginationService {
-    setPagination(totalItems: number, currentPage: number = 1, pageSize: number = 10) {        
+    setPagination(totalItems: number, currentPage: number = 1, pageSize: number = 20) {
         let totalPages = Math.ceil(totalItems / pageSize);
 
         if(currentPage < 1) {

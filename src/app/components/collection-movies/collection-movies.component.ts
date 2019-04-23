@@ -21,10 +21,8 @@ export class CollectionMoviesComponent implements OnInit {
     this._activatedRoute.params.subscribe(
       params => {
         this.movieTitle = params['title'];
+        this.collection = collections.find(item => item.title === this.movieTitle);
       })
 
-    this.collection = collections.find(item => item.title === this.movieTitle);
   }
-
-
 }

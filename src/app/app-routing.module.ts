@@ -26,11 +26,13 @@ const routes: Routes = [
   {
     path: 'my-collections',
     component: MyCollectionsComponent,
-  },
-  {
-    path: 'my-collections/:title', 
-    component: CollectionMoviesComponent 
-
+    children: [
+      {
+        path: ':title',
+        component: CollectionMoviesComponent 
+    
+      }
+    ]
   },
   {
     path: 'create-collection',
